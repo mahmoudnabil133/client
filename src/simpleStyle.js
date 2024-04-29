@@ -8,6 +8,7 @@ function App() {
   const [title, setTitle] = useState("");
   const [auther, setAuthor] = useState("");
   const [pubYear, setYear] = useState("");
+  const [editingBook, setEditingBook] = useState(null);
 
   useEffect(() => {
     Axios.get('http://localhost:3001/books')
@@ -34,29 +35,43 @@ function App() {
     .then(res => res.data)
   };
 
-  const editTask = (id)=>{
-   // Axios.delete(`http://localhost:3001/books/${id}`)
-    //.then( res => res.data)
-      <>
-      <h1>hello bro </h1>
-      </>
-
+  const startEdit = (id)=>{
+    const bookToEdit = books.find(book=> book._id === id)
+    setEditingBook(bookToEdit);
   };
 
+  const updateBook = ()=>{
+    Axios.put(`http://localhost:3001/books/${editingBook._id}`, {
+      title:editingBook.title,
+      auther:editingBook.auther,
+      pubYear:editingBook.pubYear
+    })
+    .then(res=>{
+      setEditingBook(null)
+    })
+  }
   return (
     <div className="container">
-      {/* {editTask} */}
+
       <h1 className="mt-3">Books List</h1>
       <ul className="list-group">
         {books.map(book => (
           <li className="list-group-item"> 
             title: {book.title}<br />
-            author: {book.author}<br />
+            auther: {book.auther}<br />
             pubYear: {book.pubYear}
-            {editTask(book._id)}
             <button className='del' onClick={()=> deleteTask(book._id)}> del</button>
-            <button classNmae='edit' onClick={()=> editTask(book._id)}> edit </button>
-
+            <button classNmae='edit' onClick={()=> startEdit(book._id)}> edit </button>
+            {editingBook && editingBook._id === book._id && (
+            <div>
+              <br></br>
+              <input type='text' value={editingBook.title} onChange={ e => setEditingBook({...editingBook, title:e.target.value})} />
+              <input type='text' value={editingBook.auther} onChange={ e => setEditingBook({...editingBook, auther:e.target.value})}/>
+              <input type='number' value={editingBook.pubYear} onChange={ e => setEditingBook({...editingBook, pubYear:e.target.value})}/>
+              <Button variant='primary' onClick={updateBook}>Save</Button>
+              <Button variant='secondary' onClick={()=>setEditingBook(null)}>cancel</Button>
+            </div>
+            )}
           </li>
         ))}
       </ul>

@@ -42,3 +42,7 @@ button.del {
   /* margin-left: 200px; */
   background-color: red;
 }
+
+.editBook{
+  color: red;
+}

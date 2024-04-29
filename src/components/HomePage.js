@@ -3,7 +3,7 @@ import Axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form, Card, Row, Col } from 'react-bootstrap';
 
-function App() {
+function HomePage() {
   const [books, setBooks] = useState([]);
   const [title, setTitle] = useState('');
   const [auther, setAuther] = useState('');
@@ -116,4 +116,5 @@ function App() {
   );
 }
 
-export default App;
+
+export default HomePage
