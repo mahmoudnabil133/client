@@ -3,7 +3,7 @@ import Axios from 'axios'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Form, Col, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 function SignInPage() {
 
   const [users, setUsers] = useState([]);
@@ -12,6 +12,8 @@ function SignInPage() {
   const [password, setPass] = useState("")
   const [goodLogIn, setGoodLog] = useState("")
   const [badlogIn, setBadLog] = useState("")
+  const [noData, setNoData] = useState("")
+
   const history = useNavigate()
 
   // const [usermailMessage, setMailMessage] = useState("")
@@ -31,16 +33,21 @@ function SignInPage() {
         if (checkUser.password === password) {
           setGoodLog("you successfully logged in")
           setBadLog("")
+          setNoData("")
           history('/home')
         } else{
           setBadLog("wrong password")
           setGoodLog("")
+          setNoData("")
         }
       } else {
         setBadLog("username not exists")
         setGoodLog("")
+        setNoData("")
       }
-  }
+    } else {
+      setNoData("please enter missed data")
+    }
   };
   return (
     <div>
@@ -59,12 +66,19 @@ function SignInPage() {
           <Button variant='primary' onClick={(e)=>login(e)}>
             Sign in
           </Button>
+          <Button as = {Link} to='/sign-up' style={{marginLeft:'55%', background:'red'}}>Sign Up Page </Button>
+
           {goodLogIn && (
             <p style={{color:'green'}}>{goodLogIn}</p>
           )}
           {badlogIn && (
             <p style={{color:'red'}}>{badlogIn}</p>
           )}
+          {noData && (
+            <p style={{color:'red'}}>{noData}</p>
+          )
+
+          }
         </Form>
     </Container>
 

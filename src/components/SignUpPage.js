@@ -3,6 +3,7 @@ import Axios from 'axios'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Form, Col, Button } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom'
 
 function SignUpPage() {
 
@@ -13,6 +14,7 @@ function SignUpPage() {
   const [userNameMessage, setUserMessage] = useState("")
   const [usermailMessage, setMailMessage] = useState("")
   const [correctSignUp, setsignUp] = useState("")
+  const history = useNavigate()
 
 
   useEffect(()=>{
@@ -37,6 +39,7 @@ function SignUpPage() {
           password:password
         })
           .then(res => {
+            history('/home')
             console.log(`data from axios ${res.data}`)
           })
           .catch(err=>{
@@ -77,6 +80,7 @@ function SignUpPage() {
           <Button variant='primary' onClick={(e)=>createUser(e)}>
             Sign Up
           </Button>
+          <Button as = {Link} to='/sign-in' style={{marginLeft:'55%', background:'red'}}>Sign in Page </Button>
           {userNameMessage && (
             <p style={{color:'red'}}>{userNameMessage}</p>
           )}
