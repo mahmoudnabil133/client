@@ -18,7 +18,7 @@ function SignUpPage() {
 
 
   useEffect(()=>{
-    Axios.get('http://localhost:3001/users')
+    Axios.get('https://www.mahmoudnabil.tech/users')
       .then(res=>{
         setUsers(res.data)
       })
@@ -33,7 +33,7 @@ function SignUpPage() {
         setsignUp("you successfully signed up.")
         setUserMessage("")
         setMailMessage("")
-        Axios.post('http://localhost:3001/users', {
+        Axios.post('https://www.mahmoudnabil.tech:3001/users', {
           userName: userName,
           email:email,
           password:password
@@ -60,7 +60,7 @@ function SignUpPage() {
 
   };
   return (
-    <div>
+    <div style={{minHeight:'600px'}}>
       <Container className="my-5 p-4" style={{ maxWidth: '500px', border: '1px solid #ccc', borderRadius: '8px', backgroundColor: ' #c5c4c3 ' }}>
         <h1 className="mb-4">Sign Up</h1>
         <Form>
@@ -99,3 +99,4 @@ function SignUpPage() {
 }
 
 export default SignUpPage;
+

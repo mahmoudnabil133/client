@@ -1,23 +1,11 @@
 import React from 'react';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+// import './welcome.css'; // Import your CSS file
 
 function Welcome() {
   return (
-    <div>
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Container>
-          <Navbar.Brand href="#home">Book Store</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/sign-up">Sign Up</Nav.Link>
-              <Nav.Link as={Link} to="/sign-in">Sign In</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
+    <div className="welcome" style={{minHeight:'700px'}}>
       <div className="jumbotron text-center">
         <div className="container">
           <h1>Welcome to Our Book Store!</h1>
@@ -27,9 +15,10 @@ function Welcome() {
           <p>
             Explore our library, discover new favorites, and enjoy the convenience of reading PDFs anytime, anywhere.
           </p>
-          <p>
-            <Button as={Link} to="/sign-in" variant="primary">sign-in</Button>
-          </p>
+          <div style={{ display: 'flex', gap: '13px', marginLeft:'600px' }}>
+            <Button as={Link} to="/sign-in" variant="primary">Sign In</Button>
+            <Button as={Link} to="/home" variant="primary">Home</Button>
+          </div>
         </div>
       </div>
     </div>
@@ -37,3 +26,4 @@ function Welcome() {
 }
 
 export default Welcome;
+

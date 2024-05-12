@@ -17,4 +17,22 @@
   .jumbotron .btn-primary {
     font-size: 1.2rem;
   }
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .welcome{
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7P97cZhgub48kA51cyzddb7_In_mqcO4--w');
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    background-position: center;
+    font-family: Arial, sans-serif; /* Adjust the font-family as needed */
+  }
+  
   

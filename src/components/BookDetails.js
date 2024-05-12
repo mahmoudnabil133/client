@@ -8,7 +8,7 @@ const BookDetails = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        Axios.get(`http://localhost:3001/books/${id}`)
+        Axios.get(`https://www.mahmoudnabil.tech/books/${id}`)
         .then(res => {
             setBook(res.data);
         })
@@ -16,7 +16,7 @@ const BookDetails = () => {
     }, [id]);
 
     return (
-        <Container className="mt-4">
+        <Container className="mt-4" style={{minHeight:'650px'}}>
             <h1 className="mb-4 text-center">Book Details</h1>
             <br></br>
             <br></br>
@@ -41,3 +41,4 @@ const BookDetails = () => {
 }
 
 export default BookDetails;
+

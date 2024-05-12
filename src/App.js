@@ -6,6 +6,7 @@ import HomePage from './components/HomePage';
 import Homelayout from './components/homelayout';
 import Welcome from './components/welcome';
 import BookDetails from './components/BookDetails';
+import SearchBook from './components/Search';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Homelayout />}>
             <Route index element={<Welcome />} />
             <Route path="/home" element={<HomePage />} />
+            <Route path="/search" element={<SearchBook />} />
             <Route path="/sign-up" element={<SignUpPage />} />
             <Route path="/sign-in" element={<SignInPage />} />
             <Route path='/bookdetails/:id' element={<BookDetails/>} />
@@ -28,3 +30,4 @@ function App() {
 }
 
 export default App;
+
